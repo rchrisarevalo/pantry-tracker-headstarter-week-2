@@ -11,13 +11,13 @@ export default function Home() {
           <i className="ml-5 mr-5">This app will help you keep track of the number of items you store in your pantry.</i>
         </div>
         <form className="flex flex-col justify-center text-black space-y-5 p-10">
-          <label className=" text-left">Enter your item:</label>
+          <label className="text-left">Enter your item:</label>
           <input className="p-3 rounded-sm border-b-2 border-b-black"></input>
           <label className="text-left">How much are you going to store?</label>
           <input className="p-3 rounded-sm border-b-2 border-b-black" type="number"></input>
           <div className="flex flex-row items-center justify-center space-x-10">
-            <Button variant="contained" className="p-3 pl-6 pr-6">Add Item</Button>
-            <Button variant="contained" className="p-3 pl-6 pr-6">Remove Item</Button>
+            <Button variant="contained" className="p-3 pl-6 pr-6 bg-black rounded-3xl">Add Item</Button>
+            <Button variant="contained" className="p-3 pl-6 pr-6 bg-black rounded-3xl">Remove Item</Button>
           </div>
         </form>
       </div>
