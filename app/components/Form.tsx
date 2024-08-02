@@ -33,18 +33,12 @@ export const Form: React.FC<FormProps> = ({
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    switch (type) {
-      case "add":
-        addToPantry(setPantryItems, setAlertTrigged, setDisplayModal, form);
-      case "update":
-        updatePantry(setPantryItems, setAlertTrigged, setDisplayModal, form);
-      case "remove":
-        removeFromPantry(
-          setPantryItems,
-          setAlertTrigged,
-          setDisplayModal,
-          form
-        );
+    if (type == "add") {
+      addToPantry(setPantryItems, setAlertTrigged, setDisplayModal, form);
+    } else if (type == "update") {
+      updatePantry(setPantryItems, setAlertTrigged, setDisplayModal, form);
+    } else if (type == "remove") {
+      removeFromPantry(setPantryItems, setAlertTrigged, setDisplayModal, form);
     }
   };
 
@@ -70,44 +64,29 @@ export const Form: React.FC<FormProps> = ({
       >
         <h2 className="font-extrabold text-3xl">{title}</h2>
         <br></br>
-        {(type == "add" || type == "update") && (
-          <>
-            <TextField
-              name="name"
-              placeholder="Item"
-              onChange={handleFormChange}
-              type="text"
-            ></TextField>
-            <br></br>
-            <TextField
-              name="count"
-              placeholder="How many?"
-              type="number"
-              onChange={handleFormChange}
-            ></TextField>
-            <br></br>
-            {form.name != "" && form.count != 0 && (
-              <Button variant="contained" type="submit" className="font-sans">
-                <Typography fontFamily="sans-serif">Submit</Typography>
-              </Button>
-            )}
-          </>
+        <TextField
+          name="name"
+          placeholder="Item"
+          onChange={handleFormChange}
+          type="text"
+        ></TextField>
+        <br></br>
+        <TextField
+          name="count"
+          placeholder="How many?"
+          type="number"
+          onChange={handleFormChange}
+        ></TextField>
+        <br></br>
+        {((type == "add" || type == "update") && form.name != "" && form.count != 0) && (
+          <Button variant="contained" type="submit" className="font-sans">
+            Submit
+          </Button>
         )}
-        {type == "remove" && (
-          <>
-            <TextField
-              name="name"
-              placeholder="Which item?"
-              onChange={handleFormChange}
-              type="text"
-            ></TextField>
-            <br></br>
-            {form.name != "" && (
-              <Button variant="contained" type="submit" className="font-sans">
-                <Typography fontFamily="sans-serif">Submit</Typography>
-              </Button>
-            )}
-          </>
+        {(type == "remove" && form.name != "" && form.count >= 0) && (
+          <Button variant="contained" type="submit" className="font-sans">
+            Submit
+          </Button>
         )}
         <br></br>
         <Button

@@ -4,6 +4,7 @@ import { Box, Button, Card, Typography, Modal } from "@mui/material";
 import { CircularProgress } from "@mui/joy";
 import { retrieveFromPantry } from "./functions/crud";
 import { Form } from "./components/Form";
+import Nav from "./components/Nav";
 
 export type PantryItem = {
   name: string;
@@ -22,6 +23,7 @@ export default function Home() {
 
   return (
     <Box>
+      <Nav />
       <div className="flex items-center justify-center space-x-16 min-h-screen text-black rounded-2xl p-5 ml-10 mr-10">
         <div className="flex flex-col justify-center text-center space-y-5">
           <Typography variant="h2" fontFamily="sans-serif" fontWeight="900">
@@ -60,7 +62,7 @@ export default function Home() {
                 setSubmissionType("add");
                 setTitle("Add Item");
               }}
-              className="bg-black rounded-3xl pl-6 pr-6 pt-3 pb-3"
+              className="bg-black rounded-3xl pl-6 pr-6 pt-3 pb-3 font-sans"
             >
               Add
             </Button>
@@ -71,7 +73,7 @@ export default function Home() {
                 setSubmissionType("update");
                 setTitle("Update Item");
               }}
-              className="bg-black rounded-3xl pl-6 pr-6 pt-3 pb-3"
+              className="bg-black rounded-3xl pl-6 pr-6 pt-3 pb-3 font-sans"
             >
               Update
             </Button>
@@ -82,9 +84,9 @@ export default function Home() {
                 setSubmissionType("remove");
                 setTitle("Remove Item");
               }}
-              className="bg-black rounded-3xl pl-6 pr-6 pt-3 pb-3"
+              className="bg-black rounded-3xl pl-6 pr-6 pt-3 pb-3 font-sans"
             >
-              <Typography variant="body2">Remove</Typography>
+              Remove
             </Button>
           </div>
           <Modal open={displayModal} onClose={() => setDisplayModal(false)}>
