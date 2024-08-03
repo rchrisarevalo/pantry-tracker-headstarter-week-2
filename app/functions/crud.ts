@@ -122,10 +122,6 @@ export const removeFromPantry = async (
   // quantity of the item that is about to be
   // updated.
   const docSnap = await getDoc(document);
-  
-  // Retrieve the quantity of the item
-  // in question.
-  const { count } = docSnap.data()
 
   // If the item exists, and the new count to remove
   // a certain quantity is less than the original
@@ -136,6 +132,11 @@ export const removeFromPantry = async (
     // of a specific item in the pantry, but is not 0,
     // then update the count to be less than the
     // original count retrieved from the database.
+    
+    // Retrieve the quantity of the item
+    // in question.
+    const { count } = docSnap.data()
+
     if (form.count != 0 && form.count < parseInt(count)) {
       await setDoc(document, {count: form.count})
       setDisplayModal(false)

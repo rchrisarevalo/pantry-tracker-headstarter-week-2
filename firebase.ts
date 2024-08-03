@@ -2,6 +2,8 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -10,7 +12,7 @@ import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
   authDomain: process.env.AUTH_DOMAIN,
-  projectId: "pantry-tracker-d20e0",
+  projectId: process.env.PROJECT_ID,
   storageBucket: process.env.STORAGE_BUCKET,
   messagingSenderId: process.env.MESSAGING_SENDER_ID,
   appId: process.env.APP_ID,
@@ -21,5 +23,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 const firestore = getFirestore(app)
+const auth = getAuth(app)
 
-export {firestore}
+export {auth, firestore}
