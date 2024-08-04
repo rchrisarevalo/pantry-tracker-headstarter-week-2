@@ -1,19 +1,14 @@
-import {
-  Alert,
-  Box,
-  Button,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { addToPantry, removeFromPantry, updatePantry } from "../functions/crud";
+import { Alert, Box, Button, TextField, Typography } from "@mui/material";
+import { addToPantry } from "../functions/crud";
 import React, { useState } from "react";
 import { PantryItem } from "../page";
 
 interface FormProps {
-  setPantryItems: React.Dispatch<React.SetStateAction<PantryItem[]>>,
-  setDisplayModal: React.Dispatch<React.SetStateAction<boolean>>,
-  title: string,
-  type: string
+  setPantryItems: React.Dispatch<React.SetStateAction<PantryItem[]>>;
+  setDisplayModal: React.Dispatch<React.SetStateAction<boolean>>;
+  title: string;
+  type: string;
+  uid: string | undefined;
 }
 
 export const Form: React.FC<FormProps> = ({
@@ -21,9 +16,11 @@ export const Form: React.FC<FormProps> = ({
   setDisplayModal,
   title,
   type,
+  uid,
 }) => {
   const [form, setForm] = useState<PantryItem>({
     name: "",
+    uid: uid,
     count: 0,
   });
 
@@ -59,14 +56,14 @@ export const Form: React.FC<FormProps> = ({
       >
         <h2 className="font-extrabold text-3xl">{title}</h2>
         <br></br>
-        {(type != "remove") &&
+        {type != "remove" && (
           <TextField
             name="name"
             placeholder="Item"
             onChange={handleFormChange}
             type="text"
           ></TextField>
-        }
+        )}
         <br></br>
         <TextField
           name="count"
@@ -75,11 +72,13 @@ export const Form: React.FC<FormProps> = ({
           onChange={handleFormChange}
         ></TextField>
         <br></br>
-        {((type == "add" || type == "update") && form.name != "" && form.count != 0) && (
-          <Button variant="contained" type="submit" className="font-sans">
-            Submit
-          </Button>
-        )}
+        {(type == "add" || type == "update") &&
+          form.name != "" &&
+          form.count != 0 && (
+            <Button variant="contained" type="submit" className="font-sans">
+              Submit
+            </Button>
+          )}
         <br></br>
         <Button
           variant="contained"
