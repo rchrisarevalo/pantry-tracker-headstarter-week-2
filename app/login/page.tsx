@@ -10,6 +10,7 @@ import Nav from "../components/Nav";
 import { useRouter } from "next/navigation";
 import { CircularProgress } from "@mui/joy";
 import Link from "next/link";
+import Footer from "../components/Footer";
 
 type LoginForm = {
   email: string;
@@ -21,9 +22,10 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [signIn, user, sign_in_loading, sign_in_error] = useSignInWithEmailAndPassword(auth);
+  const [signIn, user, sign_in_loading, sign_in_error] =
+    useSignInWithEmailAndPassword(auth);
   const [authenticated, loading, loading_error] = useAuthState(auth);
-  const [submitted, setSubmitted] = useState<boolean>(false)
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
   console.log(authenticated);
 
@@ -35,13 +37,13 @@ const Login = () => {
     setSubmitted(true);
 
     const res = await signIn(login.email, login.password);
-    
+
     if (res) {
       setTimeout(() => {
-        router.push("/pantry")
-      }, 3000)
+        router.push("/pantry");
+      }, 3000);
     } else {
-      throw new Error("Invalid username and/or password. Please try again.")
+      throw new Error("Invalid username and/or password. Please try again.");
     }
   };
 
@@ -65,14 +67,27 @@ const Login = () => {
                 fontFamily={"sans-serif"}
                 fontWeight={"700"}
               >
-                Sign In
+                <p className="font-sans">Sign In</p>
               </Typography>
+              <br></br>
+              <i className="font-light text-1xl">
+                Sign in with your credentials to access your pantry.
+              </i>
               <form className="pt-5 pr-32 pl-32 mt-5" onSubmit={handleLogin}>
                 <TextField
-                  sx={{input: {backgroundColor: 'white', borderRadius: 1}}}
+                  sx={{
+                    input: {
+                      backgroundColor: "white",
+                      borderRadius: 1,
+                      paddingLeft: 4,
+                      paddingRight: 4,
+                      width: 350
+                    },
+                  }}
                   type="email"
                   placeholder="Email"
                   required
+
                   onChange={(e) =>
                     setLogin({ ...login, email: e.target.value })
                   }
@@ -80,7 +95,15 @@ const Login = () => {
                 <br></br>
                 <br></br>
                 <TextField
-                  sx={{input: {backgroundColor: 'white', borderRadius: 1}}}
+                  sx={{
+                    input: {
+                      backgroundColor: "white",
+                      borderRadius: 1,
+                      paddingLeft: 4,
+                      paddingRight: 4,
+                      width: 350
+                    },
+                  }}
                   type="password"
                   placeholder="Password"
                   required
@@ -100,14 +123,14 @@ const Login = () => {
                   <Button
                     variant="contained"
                     type="submit"
-                    className="bg-black rounded-3xl mt-6 pl-4 pr-4 pt-3 pb-3 font-sans"
+                    className="bg-black rounded-3xl mt-6 pl-10 pr-10 pt-3 pb-3 font-sans"
                   >
                     Sign In
                   </Button>
                   <Button
                     variant="contained"
                     type="submit"
-                    className="bg-black rounded-3xl mt-6 pl-4 pr-4 pt-3 pb-3 font-sans"
+                    className="bg-black rounded-3xl mt-6 pl-10 pr-10 pt-3 pb-3 font-sans"
                   >
                     <Link href="/signup">Sign Up</Link>
                   </Button>
@@ -115,17 +138,26 @@ const Login = () => {
               </form>
               <br></br>
               <br></br>
-              {!submitted ?
+              {!submitted ? (
                 <></>
-                :
-                !sign_in_loading ?
-                  !sign_in_error ?
-                    <Alert severity="success">Success! Logging in...</Alert>
-                    :
-                    <Alert severity="error">Invalid username and/or password. Please try again.</Alert>
-                  :
-                  <CircularProgress variant="solid" />
-              }
+              ) : !sign_in_loading ? (
+                !sign_in_error ? (
+                  <Alert severity="success">Success! Logging in...</Alert>
+                ) : (
+                  <Alert severity="error">
+                    Invalid username and/or password. Please try again.
+                  </Alert>
+                )
+              ) : (
+                <CircularProgress variant="solid" />
+              )}
+              <Box
+                position={'fixed'}
+                bottom={0}
+                width={'100%'}
+              >
+                <Footer />
+              </Box>
             </Box>
           ) : (
             router.push("/pantry")

@@ -13,6 +13,7 @@ import Nav from "../components/Nav";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase";
 import { useRouter } from "next/navigation";
+import Footer from "../components/Footer";
 
 export type PantryItem = {
   name: string;
@@ -344,6 +345,7 @@ export default function Pantry() {
                   </Modal>
                 </div>
               </div>
+              <Footer />
             </Box>
           ) : (
             router.push("/login")

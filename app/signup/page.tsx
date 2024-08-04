@@ -9,6 +9,7 @@ import { auth } from "../../firebase";
 import Nav from "../components/Nav";
 import { useRouter } from "next/navigation";
 import { CircularProgress } from "@mui/joy";
+import Footer from "../components/Footer";
 
 type SignUpForm = {
   email: string;
@@ -67,11 +68,24 @@ const SignUp = () => {
                 fontFamily={"sans-serif"}
                 fontWeight={"700"}
               >
-                Sign Up
+                <p className="font-sans">Sign Up</p>
               </Typography>
+              <br></br>
+              <i className="font-light text-1xl">
+                Create an account by providing your email address and
+                password.
+              </i>
               <form className="pt-5 p-10 mt-5" onSubmit={handleSignUp}>
                 <TextField
-                  sx={{input: {backgroundColor: 'white', borderRadius: 1}}}
+                  sx={{
+                    input: {
+                      backgroundColor: "white",
+                      borderRadius: 1,
+                      paddingLeft: 4,
+                      paddingRight: 4,
+                      width: 350
+                    },
+                  }}
                   type="email"
                   placeholder="Email"
                   name="email"
@@ -81,7 +95,15 @@ const SignUp = () => {
                 <br></br>
                 <br></br>
                 <TextField
-                  sx={{input: {backgroundColor: 'white', borderRadius: 1}}}
+                  sx={{
+                    input: {
+                      backgroundColor: "white",
+                      borderRadius: 1,
+                      paddingLeft: 4,
+                      paddingRight: 4,
+                      width: 350
+                    },
+                  }}
                   type="password"
                   placeholder="Password"
                   name="password"
@@ -100,7 +122,7 @@ const SignUp = () => {
                   <Button
                     variant="contained"
                     type="submit"
-                    className="bg-black rounded-3xl mt-6 pl-7 pr-7 pt-3 pb-3 font-sans"
+                    className="bg-black rounded-3xl mt-6 pl-10 pr-10 pt-3 pb-3 font-sans"
                   >
                     Sign Up
                   </Button>
@@ -117,6 +139,13 @@ const SignUp = () => {
                   :
                   <CircularProgress variant="solid" />
               }
+              <Box
+                position={'fixed'}
+                bottom={0}
+                width={'100%'}
+              >
+                <Footer />
+              </Box>
             </Box>
           ) : (
             router.push("/pantry")

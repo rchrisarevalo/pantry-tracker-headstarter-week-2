@@ -8,6 +8,7 @@ import orange from "./images/orange.jpg";
 import banana from "./images/banana.jpg";
 import pantry_sample from "./images/pantry-sample.jpg";
 import Image from "next/image";
+import Footer from "./components/Footer";
 
 const Home = () => {
 
@@ -103,6 +104,7 @@ const Home = () => {
           </div>
         </div>
       </Box>
+      <Footer />
     </>
   );
 };
