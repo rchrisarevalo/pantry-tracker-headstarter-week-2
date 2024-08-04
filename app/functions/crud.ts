@@ -12,6 +12,7 @@ import {
   doc,
   deleteDoc,
   getDoc,
+  where,
 } from "firebase/firestore";
 
 import React from "react";
@@ -29,7 +30,7 @@ export const addToPantry = async (
   );
   const document: DocumentReference<DocumentData, DocumentData> = doc(
     collect,
-    form.name
+    `${form.name}-${form.uid}`,
   );
 
   // Set alert triggered to false by default
@@ -68,7 +69,7 @@ export const updatePantry = async (
   );
   const document: DocumentReference<DocumentData, DocumentData> = doc(
     collect,
-    item_name
+    `${item_name}-${uid}`
   );
 
   // Unlike the addToPantry function, where an error
@@ -105,7 +106,7 @@ export const removeFromPantry = async (
   // the quantity of from their pantry.
   const document: DocumentReference<DocumentData, DocumentData> = doc(
     collect,
-    item_name
+    `${item_name}-${uid}`
   );
 
   // Unlike the addToPantry function, where an error
@@ -165,7 +166,7 @@ export const retrieveFromPantry = async (
   // array.
   snapshot.forEach((doc) => {
     pantryItems.push({
-      name: doc.id,
+      name: doc.id.split("-")[0],
       ...doc.data(),
     });
   });
