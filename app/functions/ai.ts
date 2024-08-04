@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import { PantryItem } from "../page";
+import { PantryItem } from "../pantry/page";
 import React from "react";
 
 const recipeSuggestions = async (
