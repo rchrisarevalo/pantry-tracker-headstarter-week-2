@@ -38,7 +38,7 @@ const Login = () => {
     
     if (res) {
       setTimeout(() => {
-        router.push("/")
+        router.push("/pantry")
       }, 3000)
     } else {
       throw new Error("Invalid username and/or password. Please try again.")
@@ -128,10 +128,10 @@ const Login = () => {
               }
             </Box>
           ) : (
-            router.push("/")
+            router.push("/pantry")
           )
         ) : (
-          router.push("/")
+          router.push("/pantry")
         )
       ) : (
         <Box

@@ -40,7 +40,7 @@ const SignUp = () => {
     
     if (res) {
       setTimeout(() => {
-        router.push("/")
+        router.push("/pantry")
       }, 3000)
     } else {
       throw new Error("Failed to create account. Please try again.")
@@ -119,10 +119,10 @@ const SignUp = () => {
               }
             </Box>
           ) : (
-            router.push("/")
+            router.push("/pantry")
           )
         ) : (
-          router.push("/")
+          router.push("/pantry")
         )
       ) : (
         <Box

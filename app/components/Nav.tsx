@@ -4,7 +4,6 @@ import React from "react";
 import { auth } from "@/firebase";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { Button, Typography } from "@mui/material";
-import { Route } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
 
 const Nav = () => {
@@ -30,19 +29,37 @@ const Nav = () => {
           <ul className="flex flex-row justify-center space-x-6">
             <li className="p-4">
               <Typography variant="h5" fontFamily={"sans-serif"}>
-                <Link href="/home">FoodPantryInventory</Link>
+                <Link href="/">FoodPantryInventory</Link>
               </Typography>
             </li>
           </ul>
           <ul className="flex flex-row items-center justify-center space-x-6">
             <li className="p-4">
-              <Link href="/home">Home</Link>
+              <Button
+                variant="text"
+                className="font-sans text-white"
+                onClick={() => router.push("/")}
+              >
+                Home
+              </Button>
             </li>
             <li className="p-4">
-              <Link href="/login">Sign In</Link>
+              <Button
+                  variant="text"
+                  className="font-sans text-white"
+                  onClick={() => router.push("/login")}
+                >
+                Sign In
+              </Button>
             </li>
             <li className="p-4">
-              <Link href="/signup">Sign Up</Link>
+              <Button
+                  variant="text"
+                  className="font-sans text-white"
+                  onClick={() => router.push("/signup")}
+                >
+                Sign Up
+              </Button>
             </li>
           </ul>
         </>
@@ -51,16 +68,16 @@ const Nav = () => {
           <ul className="flex flex-row justify-center space-x-6">
             <li className="p-4">
               <Typography variant="h5" fontFamily={"sans-serif"}>
-                <Link href="/home">FoodPantryInventory</Link>
+                <Link href="/pantry">FoodPantryInventory</Link>
               </Typography>
             </li>
           </ul>
           <ul className="flex flex-row justify-center space-x-6">
-            <li className="p-4">
+            {/* <li className="p-4">
               <Button variant="text" className="font-sans text-white">
                 Settings
               </Button>
-            </li>
+            </li> */}
             <li className="p-4">
               <Button
                 variant="text"

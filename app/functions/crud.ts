@@ -16,7 +16,7 @@ import {
 } from "firebase/firestore";
 
 import React from "react";
-import { PantryItem } from "../page";
+import { PantryItem } from "../pantry/page";
 
 export const addToPantry = async (
   setPantryItems: React.Dispatch<React.SetStateAction<any[]>>,
