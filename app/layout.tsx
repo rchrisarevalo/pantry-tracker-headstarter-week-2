@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Pantry Tracker",
+  title: "FoodPantryInventory",
   description: "A pantry tracker that helps you efficiently keep track of the items stored.",
 };
 

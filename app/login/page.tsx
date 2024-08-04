@@ -9,6 +9,7 @@ import {
 import Nav from "../components/Nav";
 import { useRouter } from "next/navigation";
 import { CircularProgress } from "@mui/joy";
+import Link from "next/link";
 
 type LoginForm = {
   email: string;
@@ -56,6 +57,7 @@ const Login = () => {
               flexDirection={"column"}
               justifyContent={"center"}
               alignItems={"center"}
+              className="bg-gradient-to-r from-stone-500 text-white to-amber-200"
             >
               <Nav />
               <Typography
@@ -67,6 +69,7 @@ const Login = () => {
               </Typography>
               <form className="pt-5 pr-32 pl-32 mt-5" onSubmit={handleLogin}>
                 <TextField
+                  sx={{input: {backgroundColor: 'white', borderRadius: 1}}}
                   type="email"
                   placeholder="Email"
                   required
@@ -77,6 +80,7 @@ const Login = () => {
                 <br></br>
                 <br></br>
                 <TextField
+                  sx={{input: {backgroundColor: 'white', borderRadius: 1}}}
                   type="password"
                   placeholder="Password"
                   required
@@ -89,16 +93,23 @@ const Login = () => {
                 <Box
                   display={"flex"}
                   flexDirection={"row"}
-                  justifyContent={"center"}
+                  justifyContent={"space-between"}
                   alignItems={"center"}
                   width={"100%"}
                 >
                   <Button
                     variant="contained"
                     type="submit"
-                    className="bg-black rounded-3xl mt-6 pl-7 pr-7 pt-3 pb-3 font-sans"
+                    className="bg-black rounded-3xl mt-6 pl-4 pr-4 pt-3 pb-3 font-sans"
                   >
                     Sign In
+                  </Button>
+                  <Button
+                    variant="contained"
+                    type="submit"
+                    className="bg-black rounded-3xl mt-6 pl-4 pr-4 pt-3 pb-3 font-sans"
+                  >
+                    <Link href="/signup">Sign Up</Link>
                   </Button>
                 </Box>
               </form>
@@ -130,6 +141,7 @@ const Login = () => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
+          className="bg-gradient-to-r from-stone-500 text-white to-amber-200"
         >
           <CircularProgress variant="solid" />
         </Box>

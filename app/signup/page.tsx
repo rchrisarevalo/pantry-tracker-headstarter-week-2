@@ -59,6 +59,7 @@ const SignUp = () => {
               flexDirection={"column"}
               justifyContent={"center"}
               alignItems={"center"}
+              className="bg-gradient-to-r from-stone-500 text-white to-amber-200"
             >
               <Nav />
               <Typography
@@ -70,6 +71,7 @@ const SignUp = () => {
               </Typography>
               <form className="pt-5 p-10 mt-5" onSubmit={handleSignUp}>
                 <TextField
+                  sx={{input: {backgroundColor: 'white', borderRadius: 1}}}
                   type="email"
                   placeholder="Email"
                   name="email"
@@ -79,6 +81,7 @@ const SignUp = () => {
                 <br></br>
                 <br></br>
                 <TextField
+                  sx={{input: {backgroundColor: 'white', borderRadius: 1}}}
                   type="password"
                   placeholder="Password"
                   name="password"
@@ -129,8 +132,9 @@ const SignUp = () => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
+          className="bg-gradient-to-r from-stone-500 text-white to-amber-200"
         >
-          <CircularProgress variant="solid" />
+          <CircularProgress variant="solid" sx={{color: 'white'}} />
         </Box>
       )}
     </>
