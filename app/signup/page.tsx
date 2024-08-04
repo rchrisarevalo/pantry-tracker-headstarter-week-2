@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
+import { auth } from '../../firebase'
 import Nav from "../components/Nav";
 import Link from "next/link";
 
@@ -18,9 +20,26 @@ const SignUp = () => {
     email: "",
     password: "",
   });
+  const [createUser] = useCreateUserWithEmailAndPassword(auth)
+  const [error, setError] = useState(false)
+  const [errorMsg, setErrorMsg] = useState("")
 
   const handleForm = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({...form, [e.target.name]: e.target.value})
+  }
+
+  const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    setError(false)
+
+    try {
+      const res = await createUser(form.email, form.password)
+    } catch {
+      setError(true)
+      setErrorMsg("Failed to register user. The account may exist or the email may be invalid. Please try again.")
+      console.error("Failed to create a user.")
+    }
   }
 
   return (
@@ -36,12 +55,13 @@ const SignUp = () => {
       <Typography variant="h2" fontFamily={"sans-serif"} fontWeight={"500"}>
         Sign Up
       </Typography>
-      <form className="pt-5 p-10 mt-5">
+      <form className="pt-5 p-10 mt-5" onSubmit={handleSignUp}>
         <TextField
           type="text"
           placeholder="First Name"
           name="f_name"
           onChange={handleForm}
+          required
         ></TextField>
         <br></br>
         <br></br>
@@ -50,6 +70,7 @@ const SignUp = () => {
           placeholder="Last Name"
           name="l_name"
           onChange={handleForm}
+          required
         ></TextField>
         <br></br>
         <br></br>
@@ -58,6 +79,7 @@ const SignUp = () => {
           placeholder="Email"
           name="email"
           onChange={handleForm}
+          required
         ></TextField>
         <br></br>
         <br></br>
@@ -66,6 +88,7 @@ const SignUp = () => {
           placeholder="Password"
           name="password"
           onChange={handleForm}
+          required
         ></TextField>
         <br></br>
         <br></br>
@@ -78,9 +101,10 @@ const SignUp = () => {
         >
           <Button
             variant="contained"
+            type="submit"
             className="bg-black rounded-3xl mt-6 pl-7 pr-7 pt-3 pb-3 font-sans"
           >
-            <Link href="/signup">Sign Up</Link>
+            Sign Up
           </Button>
         </Box>
       </form>

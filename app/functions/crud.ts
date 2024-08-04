@@ -12,7 +12,7 @@ import {
   setDoc,
   doc,
   deleteDoc,
-  getDoc,
+  getDoc
 } from "firebase/firestore";
 
 import React from "react";
@@ -46,8 +46,8 @@ export const addToPantry = async (
   // add it.
   //
   // Otherwise, don't add it to DB.
-  if (!docSnap.exists()) {
-    await setDoc(document, { count: form.count });
+  if (!docSnap.exists() && form.count > 0) {
+    await setDoc(document, { count: parseInt(form.count.toString()) });
     await retrieveFromPantry(setPantryItems);
     setDisplayModal(false);
   } else {
@@ -57,9 +57,7 @@ export const addToPantry = async (
 
 export const updatePantry = async (
   setPantryItems: React.Dispatch<React.SetStateAction<any[]>>,
-  setAlertTriggered: React.Dispatch<React.SetStateAction<boolean>>,
-  setDisplayModal: React.Dispatch<React.SetStateAction<boolean>>,
-  form: PantryItem
+  item_name: string
 ): Promise<void> => {
   const collect: CollectionReference<DocumentData, DocumentData> = collection(
     firestore,
@@ -67,13 +65,8 @@ export const updatePantry = async (
   );
   const document: DocumentReference<DocumentData, DocumentData> = doc(
     collect,
-    form.name
+    item_name
   );
-
-  // Set alert triggered to false by default
-  // in case the state is currently set to
-  // true.
-  setAlertTriggered(false);
 
   // Unlike the addToPantry function, where an error
   // is generated if an instance of an item already
@@ -87,19 +80,16 @@ export const updatePantry = async (
   //
   // Otherwise, don't.
   if (docSnap.exists()) {
-    await setDoc(document, { count: form.count });
+    const { count } = docSnap.data()
+    await setDoc(document, { count: parseInt(count + 1) });
     await retrieveFromPantry(setPantryItems);
-    setDisplayModal(false);
-  } else {
-    setAlertTriggered(true);
   }
 };
 
 export const removeFromPantry = async (
   setPantryItems: React.Dispatch<React.SetStateAction<any[]>>,
-  setAlertTriggered: React.Dispatch<React.SetStateAction<boolean>>,
-  setDisplayModal: React.Dispatch<React.SetStateAction<boolean>>,
-  form: PantryItem
+  item_name: string,
+  item_qty: number
 ): Promise<void> => {
   const collect: CollectionReference<DocumentData, DocumentData> = collection(
     firestore,
@@ -107,13 +97,8 @@ export const removeFromPantry = async (
   );
   const document: DocumentReference<DocumentData, DocumentData> = doc(
     collect,
-    form.name
+    item_name
   );
-
-  // Set alert triggered to false by default
-  // in case the state is currently set to
-  // true.
-  setAlertTriggered(false);
 
   // Unlike the addToPantry function, where an error
   // is generated if an instance of an item already
@@ -137,25 +122,17 @@ export const removeFromPantry = async (
     // in question.
     const { count } = docSnap.data()
 
-    if (form.count != 0 && form.count < parseInt(count)) {
-      await setDoc(document, {count: form.count})
-      setDisplayModal(false)
+    if ((item_qty - 1) != 0 && (item_qty - 1) < parseInt(count)) {
+      await setDoc(document, {count: item_qty - 1})
     }
     // If the updated count from the form is 0,
     // then delete the item from the pantry.
-    else if (form.count == 0) {
+    else if ((item_qty - 1) == 0) {
       await deleteDoc(document)
-      setDisplayModal(false)
-    }
-    // Otherwise, throw an error.
-    else {
-      setAlertTriggered(true)
     }
 
     // Update the pantry.
     await retrieveFromPantry(setPantryItems)
-  } else {
-    setAlertTriggered(true)
   }
 };
 
