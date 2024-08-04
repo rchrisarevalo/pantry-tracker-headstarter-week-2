@@ -1,7 +1,7 @@
 import { Alert, Box, Button, TextField, Typography } from "@mui/material";
 import { addToPantry } from "../functions/crud";
 import React, { useState } from "react";
-import { PantryItem } from "../page";
+import { PantryItem } from "../pantry/page";
 
 interface FormProps {
   setPantryItems: React.Dispatch<React.SetStateAction<PantryItem[]>>;
