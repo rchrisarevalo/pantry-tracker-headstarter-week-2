@@ -320,6 +320,8 @@ export default function Home() {
                           variant="h4"
                           fontFamily={"sans-serif"}
                           fontWeight="900"
+                          marginLeft={'1rem'}
+                          marginRight={'1rem'}
                         >
                           Suggested Recipes
                         </Typography>
