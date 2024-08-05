@@ -1,10 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import ReactGA from 'react-ga4'
-import { InitOptions } from "react-ga4/types/ga4";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -29,7 +27,6 @@ if (typeof(process.env.G_TAG) != "undefined") {
   ReactGA.initialize(process.env.G_TAG)
 }
 
-// const analytics = getAnalytics(app);
 const firestore = getFirestore(app)
 const auth = getAuth(app)
 
