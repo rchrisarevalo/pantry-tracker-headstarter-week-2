@@ -25,7 +25,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Set up Analytics.
-ReactGA.initialize(process.env.G_TAG)
+if (typeof(process.env.G_TAG) != "undefined") {
+  ReactGA.initialize(process.env.G_TAG)
+}
 
 // const analytics = getAnalytics(app);
 const firestore = getFirestore(app)
