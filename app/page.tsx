@@ -21,7 +21,7 @@ const Home = () => {
         display={"flex"}
         width={"100%"}
         height={"100vh"}
-        marginTop={"10vh"}
+        marginTop={"7.5vh"}
         flexDirection={"column"}
         justifyContent={"center"}
         alignItems={"center"}
