@@ -6,6 +6,8 @@ import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { Button, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 
+import DensityMediumOutlinedIcon from '@mui/icons-material/DensityMediumOutlined';
+
 const Nav = () => {
   const [authenticated] = useAuthState(auth);
   const [signOut, loading, error] = useSignOut(auth);
@@ -28,12 +30,12 @@ const Nav = () => {
         <>
           <ul className="flex flex-row justify-center space-x-6">
             <li className="p-4">
-              <Typography variant="h5" fontFamily={"sans-serif"}>
+              <Typography variant="h5" className="font-sans font-semibold">
                 <Link href="/">FoodPantryInventory</Link>
               </Typography>
             </li>
           </ul>
-          <ul className="flex flex-row items-center justify-center space-x-6">
+          <ul className="max-sm:hidden flex flex-row items-center justify-center space-x-6">
             <li className="p-4">
               <Button
                 variant="text"
@@ -62,12 +64,15 @@ const Nav = () => {
               </Button>
             </li>
           </ul>
+          <ul className="hidden max-md:flex flex-row items-center justify-center space-x-6">
+            <li><Button variant="contained" className="bg-transparent pt-4 pb-4 mr-1"><DensityMediumOutlinedIcon /></Button></li>
+          </ul>
         </>
       ) : (
         <>
           <ul className="flex flex-row justify-center space-x-6">
             <li className="p-4">
-              <Typography variant="h5" fontFamily={"sans-serif"}>
+              <Typography variant="h5" className="font-sans">
                 <Link href="/pantry">FoodPantryInventory</Link>
               </Typography>
             </li>

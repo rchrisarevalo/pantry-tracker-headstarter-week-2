@@ -73,7 +73,7 @@ const Login = () => {
                 <p className="font-sans">Sign In</p>
               </Typography>
               <br></br>
-              <i className="font-light text-1xl">
+              <i className="font-light text-center text-1xl max-sm:mr-10 max-sm:ml-10">
                 Sign in with your credentials to access your pantry.
               </i>
               <form className="pt-5 pr-32 pl-32 mt-5" onSubmit={handleLogin}>
@@ -82,15 +82,12 @@ const Login = () => {
                     input: {
                       backgroundColor: "white",
                       borderRadius: 1,
-                      paddingLeft: 4,
-                      paddingRight: 4,
-                      width: 350
                     },
                   }}
+                  className="min-w-96 max-sm:min-w-80"
                   type="email"
                   placeholder="Email"
                   required
-
                   onChange={(e) =>
                     setLogin({ ...login, email: e.target.value })
                   }
@@ -102,11 +99,9 @@ const Login = () => {
                     input: {
                       backgroundColor: "white",
                       borderRadius: 1,
-                      paddingLeft: 4,
-                      paddingRight: 4,
-                      width: 350
                     },
                   }}
+                  className="min-w-96 max-sm:min-w-80"
                   type="password"
                   placeholder="Password"
                   required

@@ -17,8 +17,8 @@ const Footer = () => {
         marginLeft={"10%"}
         marginRight={"10%"}
       >
-        <Typography variant="body1">
-          <p className="font-sans">(c) {`${new Date().getFullYear()} Ruben Christopher Arevalo.`}</p>
+        <Typography variant="body1" className="font-sans">
+          (c) {`${new Date().getFullYear()} Ruben Christopher Arevalo.`}
         </Typography>
       </Box>
     </Box>

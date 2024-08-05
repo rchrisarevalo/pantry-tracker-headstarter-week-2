@@ -76,7 +76,7 @@ const SignUp = () => {
                 <p className="font-sans">Sign Up</p>
               </Typography>
               <br></br>
-              <i className="font-light text-1xl">
+              <i className="font-light text-center text-1xl max-sm:mr-10 max-sm:ml-10">
                 Create an account by providing your email address and
                 password.
               </i>
@@ -86,11 +86,9 @@ const SignUp = () => {
                     input: {
                       backgroundColor: "white",
                       borderRadius: 1,
-                      paddingLeft: 4,
-                      paddingRight: 4,
-                      width: 350
                     },
                   }}
+                  className="min-w-96 max-sm:min-w-80"
                   type="email"
                   placeholder="Email"
                   name="email"
@@ -103,12 +101,10 @@ const SignUp = () => {
                   sx={{
                     input: {
                       backgroundColor: "white",
-                      borderRadius: 1,
-                      paddingLeft: 4,
-                      paddingRight: 4,
-                      width: 350
+                      borderRadius: 1
                     },
                   }}
+                  className="min-w-96 max-sm:min-w-80"
                   type="password"
                   placeholder="Password"
                   name="password"

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import Nav from "./components/Nav";
 import apple from "./images/apple.jpg";
@@ -25,19 +25,19 @@ const Home = () => {
       <Box
         display={"flex"}
         width={"100%"}
-        height={"100vh"}
-        marginTop={"7.5vh"}
+        height={"100%"}
+        marginTop={"4.5rem"}
         flexDirection={"column"}
         justifyContent={"center"}
         alignItems={"center"}
         className="bg-gradient-to-r from-stone-500 text-white to-amber-200"
       >
-        <div className="grid grid-cols-2 items-center text-center ml-10 mr-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-24 mb-24 items-center text-center ml-10 mr-10">
           <div className="space-y-5">
-            <h1 className="font-sans text-6xl ml-4 mr-4 font-bold">
+            <Typography variant="h2" className="font-sans text-5xl max-sm:text-3xl font-bold">
               FoodPantryInventory
-            </h1>
-            <h4 className="font-sans text-3xl ml-8 mr-8">
+            </Typography>
+            <h4 className="font-sans text-3xl max-sm:text-2xl ml-8 mr-8">
               Wanting to manage your pantry inventory in addition to knowing
               what recipes you want for breakfast, lunch, or dinner?
             </h4>
@@ -51,7 +51,7 @@ const Home = () => {
             </h4>
             <h4 className="font-sans text-lg ml-8 mr-8 space-y-10 font-light">
               <p>Create an account or sign in to get started today!</p>
-              <div className="grid grid-cols-2 grid-rows-1 place-items-center text-center">
+              <div className="grid grid-cols-2 grid-rows-1 max-sm:grid-cols-1 max-sm:gap-5 place-items-center text-center">
                 <Button
                   className="bg-black rounded-3xl pl-14 pr-14 pt-4 pb-4 font-sans"
                   variant="contained"
