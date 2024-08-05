@@ -76,7 +76,7 @@ const Login = () => {
               <i className="font-light text-center text-1xl max-sm:mr-10 max-sm:ml-10">
                 Sign in with your credentials to access your pantry.
               </i>
-              <form className="pt-5 pr-32 pl-32 mt-5" onSubmit={handleLogin}>
+              <form className="pt-5 p-5 mt-5" onSubmit={handleLogin}>
                 <TextField
                   sx={{
                     input: {
@@ -134,8 +134,6 @@ const Login = () => {
                   </Button>
                 </Box>
               </form>
-              <br></br>
-              <br></br>
               {!submitted ? (
                 <></>
               ) : !sign_in_loading ? (
