@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Button } from "@mui/material";
 import { useRouter } from "next/navigation";
 import Nav from "./components/Nav";
@@ -9,10 +9,15 @@ import banana from "./images/banana.jpg";
 import pantry_sample from "./images/pantry-sample.jpg";
 import Image from "next/image";
 import Footer from "./components/Footer";
+import ReactGA from 'react-ga4';
 
 const Home = () => {
 
   const router = useRouter()
+
+  useEffect(() => {
+    ReactGA.send({hitType: 'pageview', page: '/', title: 'Home Page'})
+  }, [])
 
   return (
     <>

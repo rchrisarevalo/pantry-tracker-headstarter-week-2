@@ -13,7 +13,8 @@ const nextConfig = {
         APP_ID: process.env.APP_ID,
         MEASUREMENT_ID: process.env.MEASUREMENT_ID,
         OPENAI_API_KEY: process.env.OPENAI_API_KEY,
-        AI_PROMPT: process.env.AI_PROMPT
+        AI_PROMPT: process.env.AI_PROMPT,
+        G_TAG: process.env.G_TAG
     }
 };
 

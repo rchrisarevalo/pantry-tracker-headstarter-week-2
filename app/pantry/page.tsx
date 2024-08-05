@@ -14,6 +14,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase";
 import { useRouter } from "next/navigation";
 import Footer from "../components/Footer";
+import ReactGA from 'react-ga4';
 
 export type PantryItem = {
   name: string;
@@ -33,6 +34,10 @@ export default function Pantry() {
 
   // Keep track of the user's current authentication status.
   const [authenticated, loading, loading_error] = useAuthState(auth);
+
+  useEffect(() => {
+    ReactGA.send({hitType: 'pageview', page: '/pantry', title: 'Pantry Page'})
+  }, [])
 
   const router = useRouter();
 

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, Box, Button, TextField, Typography } from "@mui/material";
 import { auth } from "@/firebase";
 import {
@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { CircularProgress } from "@mui/joy";
 import Link from "next/link";
 import Footer from "../components/Footer";
+import ReactGA from 'react-ga4';
 
 type LoginForm = {
   email: string;
@@ -27,7 +28,9 @@ const Login = () => {
   const [authenticated, loading, loading_error] = useAuthState(auth);
   const [submitted, setSubmitted] = useState<boolean>(false);
 
-  console.log(authenticated);
+  useEffect(() => {
+    ReactGA.send({hitType: 'pageview', page: '/login', title: 'Sign In Page'})
+  }, [])
 
   const router = useRouter();
 

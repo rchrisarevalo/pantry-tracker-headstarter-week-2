@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Alert, Box, Button, TextField, Typography } from "@mui/material";
 import {
   useCreateUserWithEmailAndPassword,
@@ -10,6 +10,7 @@ import Nav from "../components/Nav";
 import { useRouter } from "next/navigation";
 import { CircularProgress } from "@mui/joy";
 import Footer from "../components/Footer";
+import ReactGA from 'react-ga4';
 
 type SignUpForm = {
   email: string;
@@ -24,6 +25,10 @@ const SignUp = () => {
   const [createUser, user, creating_loading, creating_error] = useCreateUserWithEmailAndPassword(auth);
   const [authenticated, loading, loading_error] = useAuthState(auth);
   const [submitted, setSubmitted] = useState<boolean>(false)
+
+  useEffect(() => {
+    ReactGA.send({hitType: 'pageview', page: '/signup', title: 'Sign Up Page'})
+  }, [])
 
   const router = useRouter();
 
