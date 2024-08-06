@@ -79,7 +79,7 @@ const Nav = () => {
           </ul>
           <ul
             id="mobile-nav"
-            className="hidden fixed max-md:flex flex-col min-h-screen left-full min-w-full bg-black items-center justify-evenly gap-2"
+            className="hidden fixed max-md:flex flex-col min-h-screen left-full min-w-full bg-black items-center justify-center gap-2"
           >
             <li className="p-1 mt-3 absolute top-0 right-0">
               <Button
