@@ -6,7 +6,9 @@ import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { Button, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 
-import DensityMediumOutlinedIcon from '@mui/icons-material/DensityMediumOutlined';
+import DensityMediumOutlinedIcon from "@mui/icons-material/DensityMediumOutlined";
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import navToggle from "../functions/nav_toggle";
 
 const Nav = () => {
   const [authenticated] = useAuthState(auth);
@@ -47,25 +49,74 @@ const Nav = () => {
             </li>
             <li className="p-4">
               <Button
-                  variant="text"
-                  className="font-sans text-white"
-                  onClick={() => router.push("/login")}
-                >
+                variant="text"
+                className="font-sans text-white"
+                onClick={() => router.push("/login")}
+              >
                 Sign In
               </Button>
             </li>
             <li className="p-4">
               <Button
-                  variant="text"
-                  className="font-sans text-white"
-                  onClick={() => router.push("/signup")}
-                >
+                variant="text"
+                className="font-sans text-white"
+                onClick={() => router.push("/signup")}
+              >
                 Sign Up
               </Button>
             </li>
           </ul>
           <ul className="hidden max-md:flex flex-row items-center justify-center space-x-6">
-            <li><Button variant="contained" className="bg-transparent pt-4 pb-4 mr-1"><DensityMediumOutlinedIcon /></Button></li>
+            <li>
+              <Button
+                variant="contained"
+                className="bg-transparent pt-4 pb-4 mr-1"
+                onClick={navToggle}
+              >
+                <DensityMediumOutlinedIcon />
+              </Button>
+            </li>
+          </ul>
+          <ul
+            id="mobile-nav"
+            className="hidden fixed max-md:flex flex-col min-h-screen left-full min-w-full bg-black items-center justify-evenly gap-2"
+          >
+            <li className="p-1 mt-3 absolute top-0 right-0">
+              <Button
+                variant="contained"
+                onClick={navToggle}
+                className="bg-transparent pt-4 pb-4"
+              >
+                <CloseOutlinedIcon />
+              </Button>
+            </li>
+            <li className="p-4">
+              <Button
+                variant="text"
+                className="font-sans text-white"
+                onClick={() => router.push("/")}
+              >
+                Home
+              </Button>
+            </li>
+            <li className="p-4">
+              <Button
+                variant="text"
+                className="font-sans text-white"
+                onClick={() => router.push("/login")}
+              >
+                Sign In
+              </Button>
+            </li>
+            <li className="p-4">
+              <Button
+                variant="text"
+                className="font-sans text-white"
+                onClick={() => router.push("/signup")}
+              >
+                Sign Up
+              </Button>
+            </li>
           </ul>
         </>
       ) : (
