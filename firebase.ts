@@ -24,7 +24,11 @@ const app = initializeApp(firebaseConfig);
 
 // Set up Analytics.
 if (typeof(process.env.G_TAG) != "undefined") {
-  ReactGA.initialize(process.env.G_TAG)
+  ReactGA.initialize(process.env.G_TAG, {
+    gaOptions: {
+      anonymizeIp: true
+    }
+  })
 }
 
 const firestore = getFirestore(app)
