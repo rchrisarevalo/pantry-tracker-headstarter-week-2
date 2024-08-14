@@ -15,6 +15,7 @@ import { auth } from "@/firebase";
 import { useRouter } from "next/navigation";
 import Footer from "../components/Footer";
 import ReactGA from 'react-ga4';
+import Markdown from "react-markdown";
 
 export type PantryItem = {
   name: string;
@@ -334,7 +335,9 @@ export default function Pantry() {
                         <br></br>
                         {recipes?.split("\n").map((content, i) => (
                           <p key={`paragraph-${i}`} className="ml-4 mr-4">
-                            {content}
+                            <Markdown>
+                              {content}
+                            </Markdown>
                           </p>
                         ))}
                         <br></br>
